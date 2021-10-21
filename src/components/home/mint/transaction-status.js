@@ -23,58 +23,66 @@ export default function TransactionStatus({
         >
           <div
             className={`modius-bold text-center ${
-              transactionStatus === "pendingApproval" ||
-              transactionStatus === "pending"
+              process.env.REACT_APP_MINTING_ENABLED === "false"
+                ? "text-red text-4xl md:text-5xl md:px-10 xl:text-6xl"
+                : transactionStatus === "pendingApproval" ||
+                  transactionStatus === "pending"
                 ? "text-red text-2xl md:text-4xl xl:text-5xl"
                 : "text-white text-3xl md:4xl xl:text-5xl"
             } px-2 sm:px-5`}
           >
-            {transactionStatus === "pendingApproval"
+            {process.env.REACT_APP_MINTING_ENABLED === "false"
+              ? "COMING SOON!"
+              : transactionStatus === "pendingApproval"
               ? "PLEASE CONFIRM THE TRANSACTION"
               : transactionStatus === "pending"
               ? "YOUR TRANSACTION IS PENDING"
-              : transactionStatus === "completed"? "MINTING SUCESSFUL!" : "MINTING FAILED"}
+              : transactionStatus === "completed"
+              ? "MINTING SUCESSFUL!"
+              : "MINTING FAILED"}
           </div>
 
-          <div
-            className={`${
-              transactionStatus === "pendingApproval" ||
-              transactionStatus === "pending"
-                ? "text-black"
-                : "text-white text-base hover:underline cursor-pointer"
-            } text-center break-all ibm-plex-bold px-6 pt-5 xl:pt-16 xl:pb-5 md:text-lg xl:text-2xl`}
-          >
-            {transactionStatus === "pendingApproval" ? (
-              nftAmount > 1 ? (
-                `${nftAmount} NFTs  —  ${nftAmount * 0.1} ETH`
+          {process.env.REACT_APP_MINTING_ENABLED === "false" ? null : (
+            <div
+              className={`${
+                transactionStatus === "pendingApproval" ||
+                transactionStatus === "pending"
+                  ? "text-black"
+                  : "text-white text-base hover:underline cursor-pointer"
+              } text-center break-all ibm-plex-bold px-6 pt-5 xl:pt-16 xl:pb-5 md:text-lg xl:text-2xl`}
+            >
+              {transactionStatus === "pendingApproval" ? (
+                nftAmount > 1 ? (
+                  `${nftAmount} NFTs  —  ${nftAmount * 0.1} ETH`
+                ) : (
+                  `${nftAmount} NFT  —  ${nftAmount * 0.1} ETH`
+                )
               ) : (
-                `${nftAmount} NFT  —  ${nftAmount * 0.1} ETH`
-              )
-            ) : (
-              <a
-                href={`https://rinkeby.etherscan.io/tx/${transactionHash}`}
-                target="_blank"
-                className="flex items-center justify-center cursor-pointer hover:underline mt-8 mb-2"
-              >
-                View on Etherscan
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ transform: "rotate(45deg)" }}
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                <a
+                  href={`https://rinkeby.etherscan.io/tx/${transactionHash}`}
+                  target="_blank"
+                  className="flex items-center justify-center cursor-pointer hover:underline mt-8 mb-2"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M7 11l5-5m0 0l5 5m-5-5v12"
-                  />
-                </svg>
-              </a>
-            )}
-          </div>
+                  View on Etherscan
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{ transform: "rotate(45deg)" }}
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M7 11l5-5m0 0l5 5m-5-5v12"
+                    />
+                  </svg>
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </>

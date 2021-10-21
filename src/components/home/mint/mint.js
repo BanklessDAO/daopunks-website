@@ -31,7 +31,7 @@ function MintNFT({ wallet, setWallet, isSoldOut, setIsSoldOut }) {
 
       {wallet === null && !isSoldOut ? (
         <button
-          onClick={() => walletconnect(setWallet)}
+          onClick={() => walletconnect(setWallet, settransactionStatus)}
           className="mt-16 sm:mt-28 px-3 sm:px-10 mx-5 py-5 rounded bg-white modius-bold text-base sm:text-xl leading-snug text-black outline-none"
         >
           CONNECT YOUR WALLET
