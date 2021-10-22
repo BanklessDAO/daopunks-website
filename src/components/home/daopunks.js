@@ -1,12 +1,12 @@
-import DaopunkAnon1 from "../../assets/images/nfts/1.png";
-import DaopunkAnon2 from "../../assets/images/nfts/2.png";
-import DaopunkAnon3 from "../../assets/images/nfts/3.png";
-import DaopunkAnon4 from "../../assets/images/nfts/4.png";
-import DaopunkAnon5 from "../../assets/images/nfts/5.png";
-import DaopunkAnon6 from "../../assets/images/nfts/6.png";
-import DaopunkAnon7 from "../../assets/images/nfts/7.png";
-import DaopunkAnon8 from "../../assets/images/nfts/8.png";
-import DaopunkAnon9 from "../../assets/images/nfts/9.png";
+import DaopunkAnon1 from "../../assets/images/nfts/1.jpg";
+import DaopunkAnon2 from "../../assets/images/nfts/2.jpg";
+import DaopunkAnon3 from "../../assets/images/nfts/3.jpg";
+import DaopunkAnon4 from "../../assets/images/nfts/4.jpg";
+import DaopunkAnon5 from "../../assets/images/nfts/5.jpg";
+import DaopunkAnon6 from "../../assets/images/nfts/6.jpg";
+import DaopunkAnon7 from "../../assets/images/nfts/7.jpg";
+import DaopunkAnon8 from "../../assets/images/nfts/8.jpg";
+import DaopunkAnon9 from "../../assets/images/nfts/9.jpg";
 
 export default function DaoPunks({ showMore, setShowMore }) {
   const daopunks = !showMore
