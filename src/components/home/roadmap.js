@@ -13,14 +13,14 @@ export default function Roadmap() {
   return (
     <>
       <div id="roadmap" className="w-screen h-max bg-white modius-bold">
-        <div className="pt-24 text-center text-red text-4xl xl:text-7xl">
+        <div className="pt-24 text-center text-red text-4xl lg:text-7xl">
           ROADMAP
         </div>
-        <div className="flex flex-col items-center mt-10 xl:mt-24 mb-24 gap-y-16 xl:gap-y-16">
-          <div className="max-w-sm xl:max-w-4xl flex flex-col xl:flex-row xl:gap-x-16 items-center px-5">
+        <div className="flex flex-col items-center mt-10 lg:mt-24 mb-24 gap-y-16 lg:gap-y-16">
+          <div className="max-w-sm lg:max-w-4xl flex flex-col lg:flex-row lg:gap-x-16 items-center px-5">
             <img className="w-60" src={Image1} alt="" />
             <div>
-              <div className="mt-5 modius-bold text-red text-2xl xl:text-3xl">
+              <div className="mt-5 modius-bold text-red text-2xl lg:text-3xl">
                 MINT YOUR DAOPUNK
               </div>
               <div className="mt-3 open-sans-light text-md">
@@ -29,7 +29,7 @@ export default function Roadmap() {
               </div>
             </div>
           </div>
-          <div className="max-w-sm xl:max-w-4xl flex flex-col xl:flex-row xl:gap-x-16 items-center xl:items-start px-5">
+          <div className="max-w-sm lg:max-w-4xl flex flex-col lg:flex-row lg:gap-x-16 items-center lg:items-start px-5">
             <img className="w-60" src={Image2} alt="" />
             <div>
               <div className="mt-5 modius-bold text-red text-2xl">
@@ -44,12 +44,12 @@ export default function Roadmap() {
                 print design on the shirt itself! The claim window will be
                 announced after the public mint.
               </div>
-              <img className="hidden xl:block" src={Shirts} alt="" />
-              <img className="block xl:hidden" src={Shirt1} alt="" />
-              <img className="block xl:hidden" src={Shirt2} alt="" />
+              <img className="hidden lg:block" src={Shirts} alt="" />
+              <img className="block lg:hidden" src={Shirt1} alt="" />
+              <img className="block lg:hidden" src={Shirt2} alt="" />
             </div>
           </div>
-          <div className="max-w-sm xl:max-w-4xl flex flex-col xl:flex-row xl:gap-x-16 items-center xl:items-start px-5">
+          <div className="max-w-sm lg:max-w-4xl flex flex-col lg:flex-row lg:gap-x-16 items-center lg:items-start px-5">
             <img className="w-60" src={Image3} alt="" />
             <div>
               <div className="mt-5 modius-bold text-red text-2xl">
@@ -73,7 +73,7 @@ export default function Roadmap() {
               </div>
             </div>
           </div>
-          <div className="max-w-sm xl:max-w-4xl flex flex-col xl:flex-row xl:gap-x-16 items-center xl:items-start px-5">
+          <div className="max-w-sm lg:max-w-4xl flex flex-col lg:flex-row lg:gap-x-16 items-center lg:items-start px-5">
             <img className="w-60" src={Image4} alt="" />
             <div>
               <div className="mt-5 modius-bold text-red text-2xl">
@@ -97,7 +97,7 @@ export default function Roadmap() {
               </div>
             </div>
           </div>
-          <div className="max-w-sm xl:max-w-4xl flex flex-col xl:flex-row xl:gap-x-16 items-center px-5">
+          <div className="max-w-sm lg:max-w-4xl flex flex-col lg:flex-row lg:gap-x-16 items-center px-5">
             <img className="w-60" src={Image5} alt="" />
             <div>
               <div className="mt-5 modius-bold text-red text-2xl">
@@ -111,7 +111,7 @@ export default function Roadmap() {
               </div>
             </div>
           </div>
-          <div className="max-w-sm xl:max-w-4xl flex flex-col xl:flex-row xl:gap-x-16 items-center px-5">
+          <div className="max-w-sm lg:max-w-4xl flex flex-col lg:flex-row lg:gap-x-16 items-center px-5">
             <img className="w-60" src={Image6} alt="" />
             <div>
               <div className="mt-5 modius-bold text-red text-2xl">
@@ -125,7 +125,7 @@ export default function Roadmap() {
               </div>
             </div>
           </div>
-          <div className="max-w-sm xl:max-w-4xl flex flex-col xl:flex-row xl:gap-x-16 items-center px-5">
+          <div className="max-w-sm lg:max-w-4xl flex flex-col lg:flex-row lg:gap-x-16 items-center px-5">
             <img className="w-60" src={Image7} alt="" />
             <div>
               <div className="mt-5 modius-bold text-red text-2xl">
