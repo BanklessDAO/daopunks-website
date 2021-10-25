@@ -64,7 +64,10 @@ export default function Hero() {
               <img src={Discord} alt="" />
             </a>
           </div>
-          <a href="#mint" className="flex items-center justify-center px-3 sm:px-7 py-5 rounded bg-black text-white modius-bold text-base sm:text-xl leading-snug text-black outline-none">
+          <a
+            href="#mint"
+            className="flex items-center justify-center px-3 sm:px-7 py-5 rounded bg-black text-white modius-bold text-base sm:text-xl leading-snug text-black outline-none"
+          >
             CONNECT
           </a>
         </div>
@@ -107,9 +110,14 @@ export default function Hero() {
               MINT A DAOPUNK
             </a>
           </div>
-          <a href="#mint" className="flex items-center justify-center xl:hidden w-2/3 sm:w-max px-3 sm:px-10 mx-5 py-5 mb-10 rounded bg-white modius-bold text-sm sm:text-xl leading-snug text-black outline-none">
+          <button
+            onClick={() => {
+              window.location.href = "#mint";
+            }}
+            className="xl:hidden w-2/3 sm:w-max px-3 sm:px-10 mx-5 py-5 mb-10 rounded bg-white modius-bold text-sm sm:text-xl leading-snug text-black outline-none"
+          >
             CONNECT YOUR WALLET
-          </a>
+          </button>
         </div>
       </div>
     </div>
