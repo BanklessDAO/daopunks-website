@@ -8,34 +8,34 @@ var provider;
 
 const walletconnect = async function (setWallet, settransactionStatus) {
   // if (process.env.REACT_APP_MINTING_ENABLED === "false") {
-  //   settransactionStatus("pendingApproval");
+  settransactionStatus("pendingApproval");
   // } else {
-    try {
-      const providerOptions = {
-        walletconnect: {
-          package: WalletConnectProvider, // required
-          options: {
-            infuraId: "1ad4fe9fd37042e899c9a3b20f0df992", // required
-          },
+  try {
+    const providerOptions = {
+      walletconnect: {
+        package: WalletConnectProvider, // required
+        options: {
+          infuraId: "1ad4fe9fd37042e899c9a3b20f0df992", // required
         },
-      };
+      },
+    };
 
-      const web3Modal = new Web3Modal({
-        network: "rinkeby",
-        cacheProvider: false,
-        providerOptions,
-      });
+    const web3Modal = new Web3Modal({
+      network: "rinkeby",
+      cacheProvider: false,
+      providerOptions,
+    });
 
-      await web3Modal.clearCachedProvider();
+    await web3Modal.clearCachedProvider();
 
-      provider = await web3Modal.connect();
-      const web3 = new Web3(provider);
-      const accounts = await web3.eth.getAccounts();
+    provider = await web3Modal.connect();
+    const web3 = new Web3(provider);
+    const accounts = await web3.eth.getAccounts();
 
-      setWallet(accounts[0]);
-    } catch (err) {
-      console.log(err);
-    }
+    setWallet(accounts[0]);
+  } catch (err) {
+    console.log(err);
+  }
   // }
 };
 

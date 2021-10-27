@@ -23,7 +23,7 @@ export default function TransactionStatus({
         >
           <div
             className={`modius-bold text-center ${
-              process.env.REACT_APP_MINTING_ENABLED === "false"
+              process.env.REACT_APP_MINTING_ENABLED === "false" || true
                 ? "text-red text-4xl md:text-5xl md:px-10 xl:text-6xl"
                 : transactionStatus === "pendingApproval" ||
                   transactionStatus === "pending"
@@ -31,7 +31,7 @@ export default function TransactionStatus({
                 : "text-white text-3xl md:4xl xl:text-5xl"
             } px-2 sm:px-5`}
           >
-            {process.env.REACT_APP_MINTING_ENABLED === "false"
+            {process.env.REACT_APP_MINTING_ENABLED === "false" || true
               ? "COMING SOON!"
               : transactionStatus === "Presale Requirements Not Met"
               ? "PRE-SALE REQUIREMENT NOT MET"
@@ -45,7 +45,8 @@ export default function TransactionStatus({
           </div>
 
           {process.env.REACT_APP_MINTING_ENABLED === "false" ||
-          transactionStatus === "Presale Requirements Not Met" ? null : (
+          transactionStatus === "Presale Requirements Not Met" ||
+          true ? null : (
             <div
               className={`${
                 transactionStatus === "pendingApproval" ||
