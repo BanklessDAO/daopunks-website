@@ -7,9 +7,9 @@ import whitelist from "./whitelist.js";
 var provider;
 
 const walletconnect = async function (setWallet, settransactionStatus) {
-  if (process.env.REACT_APP_MINTING_ENABLED === "false") {
-    settransactionStatus("pendingApproval");
-  } else {
+  // if (process.env.REACT_APP_MINTING_ENABLED === "false") {
+  //   settransactionStatus("pendingApproval");
+  // } else {
     try {
       const providerOptions = {
         walletconnect: {
@@ -36,7 +36,7 @@ const walletconnect = async function (setWallet, settransactionStatus) {
     } catch (err) {
       console.log(err);
     }
-  }
+  // }
 };
 
 const mint = async function (
