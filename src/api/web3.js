@@ -8,7 +8,7 @@ var provider;
 
 const walletconnect = async function (setWallet, settransactionStatus) {
   // if (process.env.REACT_APP_MINTING_ENABLED === "false") {
-  settransactionStatus("pendingApproval");
+  // settransactionStatus("pendingApproval");
   // } else {
   try {
     const providerOptions = {
