@@ -33,6 +33,8 @@ export default function TransactionStatus({
           >
             {process.env.REACT_APP_MINTING_ENABLED === "false"
               ? "COMING SOON!"
+              : transactionStatus === "Presale Requirements Not Met"
+              ? "PRE-SALE REQUIREMENT NOT MET"
               : transactionStatus === "pendingApproval"
               ? "PLEASE CONFIRM THE TRANSACTION"
               : transactionStatus === "pending"
@@ -42,7 +44,8 @@ export default function TransactionStatus({
               : "MINTING FAILED"}
           </div>
 
-          {process.env.REACT_APP_MINTING_ENABLED === "false" ? null : (
+          {process.env.REACT_APP_MINTING_ENABLED === "false" ||
+          transactionStatus === "Presale Requirements Not Met" ? null : (
             <div
               className={`${
                 transactionStatus === "pendingApproval" ||
