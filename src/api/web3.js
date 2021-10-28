@@ -47,14 +47,8 @@ const mint = async function (
 ) {
   var isPartOfWhitelist = false;
 
-  function stringToHex(hex) {
-    const hex_str = hex;
-    const hex_int = parseInt(hex_str, 16);
-    const new_int = hex_int + 0x200;
-    return new_int;
-  }
-
   for (var wallet in whitelist) {
+    // eslint-disable-next-line
     if (walletId == whitelist[wallet]) {
       isPartOfWhitelist = true;
     }
