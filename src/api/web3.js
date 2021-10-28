@@ -56,7 +56,7 @@ const mint = async function (
 
   try {
     const NFT_CONTRACT_ADDRESS = process.env.REACT_APP_NFT_CONTRACT_ADDRESS;
-    const price = 1;
+    const price = 80;
 
     const web3 = new Web3(provider);
 

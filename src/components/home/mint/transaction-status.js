@@ -59,9 +59,9 @@ export default function TransactionStatus({
               >
                 {transactionStatus === "pendingApproval" ? (
                   nftAmount > 1 ? (
-                    `${nftAmount} NFTs  —  ${nftAmount * 0.1} ETH`
+                    `${nftAmount} NFTs  —  ${nftAmount * 0.08} ETH`
                   ) : (
-                    `${nftAmount} NFT  —  ${nftAmount * 0.1} ETH`
+                    `${nftAmount} NFT  —  ${nftAmount * 0.08} ETH`
                   )
                 ) : (
                   <a
