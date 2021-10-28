@@ -55,10 +55,8 @@ const mint = async function (
   }
 
   for (var wallet in whitelist) {
-    console.log(walletId);
     if (walletId == whitelist[wallet]) {
       isPartOfWhitelist = true;
-      console.log("Part of whitelist");
     }
   }
 
