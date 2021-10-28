@@ -99,6 +99,6 @@ html {
 
 @media (min-width: 1280px) {
     .max-h-38 {
-        max-height: 38rem;
+        max-height: 32rem;
     }
 }
