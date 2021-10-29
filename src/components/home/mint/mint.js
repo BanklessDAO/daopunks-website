@@ -41,8 +41,10 @@ function MintNFT({ wallet, setWallet, isSoldOut, setIsSoldOut }) {
           <input
             value={nftAmount}
             type="number"
+            min="1"
+            max="2"
             className="w-60 sm:w-80 mx-20 mt-28 pl-5 pr-3 sm:pl-10 py-5 rounded modius-bold text-base sm:text-xl leading-snug text-black outline-none"
-            onInput={(e) => setnftAmount(e.target.value)}
+            onInput={(e) => setnftAmount(Math.min(e.target.value, 2))}
           />
           <button
             onClick={() =>

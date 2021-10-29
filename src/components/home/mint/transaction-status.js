@@ -5,6 +5,8 @@ export default function TransactionStatus({
   wallet,
   nftAmount,
 }) {
+  nftAmount = Math.min(nftAmount, 2);
+
   return (
     <>
       <div
@@ -16,14 +18,15 @@ export default function TransactionStatus({
         <div
           className={`w-11/12 sm:max-w-sm md:w-max md:max-w-md xl:max-w-2xl xl:py-10 ${
             transactionStatus === "pendingApproval" ||
-            transactionStatus === "pending"
+            transactionStatus === "pending" ||
+            transactionStatus === "Coming Soon"
               ? "bg-white"
               : "red"
           } rounded-lg py-8`}
         >
           <div
             className={`modius-bold text-center ${
-              process.env.REACT_APP_MINTING_ENABLED === "false"
+              transactionStatus === "Coming Soon"
                 ? "text-red text-4xl md:text-5xl md:px-10 xl:text-6xl"
                 : transactionStatus === "pendingApproval" ||
                   transactionStatus === "pending"
@@ -31,8 +34,10 @@ export default function TransactionStatus({
                 : "text-white text-3xl md:4xl xl:text-5xl"
             } px-2 sm:px-5`}
           >
-            {process.env.REACT_APP_MINTING_ENABLED === "false"
+            {transactionStatus === "Coming Soon"
               ? "COMING SOON!"
+              : transactionStatus === "Presale Requirements Not Met"
+              ? "PRE-SALE REQUIREMENT NOT MET"
               : transactionStatus === "pendingApproval"
               ? "PLEASE CONFIRM THE TRANSACTION"
               : transactionStatus === "pending"
@@ -42,7 +47,8 @@ export default function TransactionStatus({
               : "MINTING FAILED"}
           </div>
 
-          {process.env.REACT_APP_MINTING_ENABLED === "false" ? null : (
+          {transactionStatus === "Coming Soon" ||
+          transactionStatus === "Presale Requirements Not Met" ? null : (
             <div
               className={`${
                 transactionStatus === "pendingApproval" ||
@@ -53,9 +59,9 @@ export default function TransactionStatus({
             >
               {transactionStatus === "pendingApproval" ? (
                 nftAmount > 1 ? (
-                  `${nftAmount} NFTs  —  ${nftAmount * 0.1} ETH`
+                  `${nftAmount} NFTs  —  ${nftAmount * 0.08} ETH`
                 ) : (
-                  `${nftAmount} NFT  —  ${nftAmount * 0.1} ETH`
+                  `${nftAmount} NFT  —  ${nftAmount * 0.08} ETH`
                 )
               ) : (
                 <a
