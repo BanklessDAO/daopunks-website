@@ -9,7 +9,7 @@ var moment = require("moment-timezone");
 var provider;
 
 const walletconnect = async function (setWallet, settransactionStatus) {
-  var launchTime = moment.tz("2021-10-29 11:30", "Asia/Kolkata");
+  var launchTime = moment.tz("2021-10-29 23:30", "Asia/Kolkata");
 
   console.log(launchTime.diff(Date.now()) < 0);
 
