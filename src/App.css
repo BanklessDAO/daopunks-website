@@ -1,104 +1,104 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap");
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body,
 html {
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 @font-face {
-    font-family: "Modius";
-    src: url("./assets/fonts/Modius.woff");
+  font-family: "Modius";
+  src: url("./assets/fonts/Modius.woff");
 }
 
 .modius {
-    font-family: "Modius";
-    font-weight: 400;
+  font-family: "Modius";
+  font-weight: 400;
 }
 
 @font-face {
-    font-family: "Modius Bold";
-    src: url("./assets/fonts/Modius-Bold.woff");
+  font-family: "Modius Bold";
+  src: url("./assets/fonts/Modius-Bold.woff");
 }
 
 .modius-bold {
-    font-family: "Modius Bold";
+  font-family: "Modius Bold";
 }
 
 @font-face {
-    font-family: "Violence";
-    src: url("./assets/fonts/Violence.woff");
+  font-family: "Violence";
+  src: url("./assets/fonts/Violence.woff");
 }
 
 .violence {
-    font-family: "Violence";
-    font-weight: 900;
+  font-family: "Violence";
+  font-weight: 900;
 }
 
 .open-sans-light {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
 }
 
 .open-sans {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
 }
 
 .open-sans-bold {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 800;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
 }
 
 .ibm-plex {
-    font-family: "IBM Plex Sans";
-    font-weight: 400;
+  font-family: "IBM Plex Sans";
+  font-weight: 400;
 }
 
 .ibm-plex-bold {
-    font-family: "IBM Plex Sans";
-    font-weight: 500;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
 }
 
 .red {
-    background: rgb(255, 0, 0);
+  background: rgb(255, 0, 0);
 }
 
 .text-red {
-    color: rgb(255, 0, 0);
+  color: rgb(255, 0, 0);
 }
 
 .text-hover-red:hover {
-    color: rgb(255, 0, 0);
-    transition: all 0.2s;
+  color: rgb(255, 0, 0);
+  transition: all 0.2s;
 }
 
 .red-text-shadow {
-    text-shadow: 0.3rem 0.3rem rgb(255, 0, 0);
+  text-shadow: 0.3rem 0.3rem rgb(255, 0, 0);
 }
 
 .white-text-shadow {
-    text-shadow: 0.3rem 0.3rem rgb(255, 255, 255);
+  text-shadow: 0.3rem 0.3rem rgb(255, 255, 255);
 }
 
 .input {
-    width: "15rem" !important;
+  width: "15rem" !important;
 }
 
 @media (min-width: 640px) {
-    input {
-        width: "22rem" !important;
-    }
+  input {
+    width: "22rem" !important;
+  }
 }
 
 @media (min-width: 1280px) {
-    .max-h-38 {
-        max-height: 32rem;
-    }
+  .max-h-38 {
+    max-height: 32rem;
+  }
 }

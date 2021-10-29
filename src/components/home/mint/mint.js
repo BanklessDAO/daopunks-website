@@ -6,17 +6,10 @@ import { walletconnect, mint, nftCollection } from "../../../api/web3";
 
 import TransactionStatus from "./transaction-status";
 
-function MintNFT({ wallet, setWallet, isSoldOut, setIsSoldOut }) {
+function MintNFT({ wallet, setWallet, nftSupply, setNftSupply }) {
   const [nftAmount, setnftAmount] = useState(1);
   const [transactionStatus, settransactionStatus] = useState(null);
   const [transactionHash, settransactionHash] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      // Code to check if NFT's are soldout
-      // If soldout - setIsSoldOut(true);
-    })();
-  }, [setIsSoldOut]);
 
   return (
     <>
@@ -29,14 +22,16 @@ function MintNFT({ wallet, setWallet, isSoldOut, setIsSoldOut }) {
         />
       ) : null}
 
-      {wallet === null && !isSoldOut ? (
+      {wallet === null ? (
         <button
-          onClick={() => walletconnect(setWallet, settransactionStatus)}
+          onClick={() =>
+            walletconnect(setWallet, settransactionStatus, setNftSupply)
+          }
           className="mt-16 sm:mt-28 px-3 sm:px-10 mx-5 py-5 rounded bg-white modius-bold text-base sm:text-xl leading-snug text-black outline-none"
         >
           CONNECT YOUR WALLET
         </button>
-      ) : !isSoldOut ? (
+      ) : nftSupply < 1111 ? (
         <div className="flex flex-col items-center">
           <input
             value={nftAmount}
@@ -54,6 +49,11 @@ function MintNFT({ wallet, setWallet, isSoldOut, setIsSoldOut }) {
           >
             MINT A DAOPUNK
           </button>
+          {nftSupply !== null ? (
+            <div className="red-text-shadow modius-bold text-2xl sm:text-4xl text-white mt-10 text-center">
+              {nftSupply}/1111 NFT'S <br /> MINTED
+            </div>
+          ) : null}
         </div>
       ) : (
         <div className="mt-20 sm:mt-32 mb-10 text-red white-text-shadow text-7xl sm:text-8xl text-center lg:text-9xl violence">
@@ -66,7 +66,7 @@ function MintNFT({ wallet, setWallet, isSoldOut, setIsSoldOut }) {
 
 export default function Mint() {
   const [wallet, setWallet] = useState(null);
-  const [isSoldOut, setIsSoldOut] = useState(false);
+  const [nftSupply, setNftSupply] = useState(false);
 
   return (
     <div
@@ -81,8 +81,8 @@ export default function Mint() {
       <MintNFT
         wallet={wallet}
         setWallet={setWallet}
-        isSoldOut={isSoldOut}
-        setIsSoldOut={setIsSoldOut}
+        nftSupply={nftSupply}
+        setNftSupply={setNftSupply}
       />
     </div>
   );

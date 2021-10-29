@@ -6,12 +6,15 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import whitelist from "./whitelist.js";
 var moment = require("moment-timezone");
 
+const NFT_CONTRACT_ADDRESS = "0x700f045de43FcE6D2C25df0288b41669B7566BbE";
 var provider;
 
-const walletconnect = async function (setWallet, settransactionStatus) {
+const walletconnect = async function (
+  setWallet,
+  settransactionStatus,
+  setNftSupply
+) {
   var launchTime = moment.tz("2021-10-29 23:30", "Asia/Kolkata");
-
-  console.log(launchTime.diff(Date.now()) < 0);
 
   if (
     process.env.REACT_APP_MINTING_ENABLED === "false" &&
@@ -40,7 +43,7 @@ const walletconnect = async function (setWallet, settransactionStatus) {
       provider = await web3Modal.connect();
       const web3 = new Web3(provider);
       const accounts = await web3.eth.getAccounts();
-
+      checkNftSupply(setNftSupply);
       setWallet(accounts[0]);
     } catch (err) {
       console.log(err);
@@ -64,7 +67,6 @@ const mint = async function (
   }
 
   try {
-    const NFT_CONTRACT_ADDRESS = "0x700f045de43FcE6D2C25df0288b41669B7566BbE";
     const price = 80;
 
     const web3 = new Web3(provider);
@@ -131,9 +133,23 @@ const mint = async function (
   }
 };
 
-const nftCollection = async function (walletId) {
-  const NFT_CONTRACT_ADDRESS = process.env.REACT_APP_NFT_CONTRACT_ADDRESS;
+const checkNftSupply = async function (setNftSupply) {
+  const web3 = new Web3(provider);
 
+  const nftContract = new web3.eth.Contract(
+    NFT_CONTRACT_ABI,
+    NFT_CONTRACT_ADDRESS,
+    { gasLimit: "700000" }
+  );
+
+  const supply = await nftContract.methods.totalSupply().call();
+
+  // eslint-disable-next-line
+
+  setNftSupply(supply);
+};
+
+const nftCollection = async function (walletId) {
   const web3 = new Web3(provider);
 
   const nftContract = new web3.eth.Contract(
