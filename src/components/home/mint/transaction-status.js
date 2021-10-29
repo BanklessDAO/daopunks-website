@@ -65,7 +65,7 @@ export default function TransactionStatus({
                 )
               ) : (
                 <a
-                  href={`https://rinkeby.etherscan.io/tx/${transactionHash}`}
+                  href={`https://etherscan.io/tx/${transactionHash}`}
                   target="_blank"
                   className="flex items-center justify-center cursor-pointer hover:underline mt-8 mb-2"
                 >
