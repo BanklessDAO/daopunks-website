@@ -4,39 +4,48 @@ import NFT_CONTRACT_ABI from "./abi.json";
 
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import whitelist from "./whitelist.js";
+var moment = require("moment-timezone");
+
 var provider;
 
 const walletconnect = async function (setWallet, settransactionStatus) {
-  // if (process.env.REACT_APP_MINTING_ENABLED === "false") {
-  // settransactionStatus("pendingApproval");
-  // } else {
-  try {
-    const providerOptions = {
-      walletconnect: {
-        package: WalletConnectProvider, // required
-        options: {
-          infuraId: "1ad4fe9fd37042e899c9a3b20f0df992", // required
+  var launchTime = moment.tz("2021-10-29 11:30", "Asia/Kolkata");
+
+  console.log(launchTime.diff(Date.now()) < 0);
+
+  if (
+    process.env.REACT_APP_MINTING_ENABLED === "false" &&
+    launchTime.diff(Date.now()) > 0
+  ) {
+    settransactionStatus("Coming Soon");
+  } else {
+    try {
+      const providerOptions = {
+        walletconnect: {
+          package: WalletConnectProvider, // required
+          options: {
+            infuraId: "1ad4fe9fd37042e899c9a3b20f0df992", // required
+          },
         },
-      },
-    };
+      };
 
-    const web3Modal = new Web3Modal({
-      network: "rinkeby",
-      cacheProvider: false,
-      providerOptions,
-    });
+      const web3Modal = new Web3Modal({
+        network: "mainnet",
+        cacheProvider: false,
+        providerOptions,
+      });
 
-    await web3Modal.clearCachedProvider();
+      await web3Modal.clearCachedProvider();
 
-    provider = await web3Modal.connect();
-    const web3 = new Web3(provider);
-    const accounts = await web3.eth.getAccounts();
+      provider = await web3Modal.connect();
+      const web3 = new Web3(provider);
+      const accounts = await web3.eth.getAccounts();
 
-    setWallet(accounts[0]);
-  } catch (err) {
-    console.log(err);
+      setWallet(accounts[0]);
+    } catch (err) {
+      console.log(err);
+    }
   }
-  // }
 };
 
 const mint = async function (
@@ -55,7 +64,7 @@ const mint = async function (
   }
 
   try {
-    const NFT_CONTRACT_ADDRESS = process.env.REACT_APP_NFT_CONTRACT_ADDRESS;
+    const NFT_CONTRACT_ADDRESS = "0x700f045de43FcE6D2C25df0288b41669B7566BbE";
     const price = 80;
 
     const web3 = new Web3(provider);
@@ -87,13 +96,16 @@ const mint = async function (
     if (balance < 35000 && !isPartOfWhitelist) {
       settransactionStatus("Presale Requirements Not Met");
     } else {
+      let baseGas = 700000;
+      var gas = amount > 1 ? baseGas + 100000 * amount : 700000;
+
       const nftContract = new web3.eth.Contract(
         NFT_CONTRACT_ABI,
         NFT_CONTRACT_ADDRESS,
-        { gasLimit: "700000" }
+        { gasLimit: gas }
       );
       settransactionStatus("pendingApproval");
-      const wei = (price * amount).toString() + "000000000000000";
+      const wei = (price * Math.min(amount, 2)).toString() + "000000000000000";
       nftContract.methods
         .mintNFT()
         .send({ from: walletId, value: wei })
