@@ -35,7 +35,7 @@ export default function Sidebar({ setShowSidebar }) {
           <a href="#team" className="text-hover-red">
             TEAM
           </a>
-          <a href="" className="text-hover-red">
+          <a href="/my-dao-punks" className="text-hover-red">
             MY DAO PUNKS
           </a>
           <a
