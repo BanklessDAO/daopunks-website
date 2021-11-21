@@ -2,7 +2,7 @@ import React from "react";
 
 export default function RedeemNFT({ nfts, setRedeem }) {
     return (
-      <div className="w-11/12 my-10 grid lg:grid-cols-3 gap-y-10 lg:gap-x-10">
+      <div className="w-11/12 max-w-7xl my-10 grid lg:grid-cols-3 gap-y-10 lg:gap-x-10">
         {nfts && nfts.map((nft, key) => { return (
           <div key={key}>
             <img className="w-full rounded-lg" src={nft.image} alt="" />

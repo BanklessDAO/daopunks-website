@@ -62,9 +62,9 @@ export default function Redeem({ wallet, nftId }) {
       style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
       className="absolute w-screen h-screen inset-0 flex items-center justify-center"
     >
-      <div className="w-11/12 bg-white py-10 rounded-lg flex flex-col items-center">
-        <h1 className="text-red text-2xl text-center">
-          REDEEM <br className="sm:hidden" /> YOUR TEE
+      <div className="w-11/12 md:w-max md:px-16 bg-white py-10 rounded-lg flex flex-col items-center">
+        <h1 className="text-red text-2xl md:text-3xl text-center">
+          REDEEM <br className="" /> YOUR TEE
         </h1>
 
         <div className="mt-10 flex flex-col items-center">
@@ -129,7 +129,7 @@ export default function Redeem({ wallet, nftId }) {
           </div>
         )}
         {redemtionStatus === null ? (
-          <div className="w-full flex justify-center px-10 mt-5">
+          <div className="w-full flex justify-center px-10 md:px-1 mt-5">
             <div
               style={{ maxWidth: "15.5rem" }}
               className="w-full flex justify-between"
