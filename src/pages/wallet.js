@@ -11,12 +11,13 @@ export default function Wallet() {
   const [wallet, setWallet] = useState(null);
   const [nfts, setNfts] = useState(null);
   const [redeem, setRedeem] = useState(null);
+  const [isHydrated, hydrate] = useState(false)
 
   useEffect(() => {
-    if (wallet !== null) {
-      nftCollection(wallet, setNfts);
+    if (wallet !== null && !isHydrated) {
+      nftCollection(wallet, setNfts, hydrate);
     }
-  }, [wallet]);
+  }, [wallet, setNfts, isHydrated, hydrate]);
 
   return (
     <div className={`h-screen flex flex-col`}>
@@ -45,7 +46,7 @@ export default function Wallet() {
             YOUR DAO PUNKS
           </div>
 
-          {nfts === null ? (
+          {nfts === null && !isHydrated ? (
             <div className="h-full flex items-center justify-center">
               Loading...
             </div>

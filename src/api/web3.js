@@ -137,66 +137,61 @@ const checkNftSupply = async function (setNftSupply) {
   setNftSupply(supply);
 };
 
-const nftCollection = async function (walletId, setNfts) {
-  const web3 = new Web3(provider);
+const nftCollection = async function (walletId, setNfts, hydrate) {
+    const web3 = new Web3(provider);
 
-  const nftContract = new web3.eth.Contract(
+    const nftContract = new web3.eth.Contract(
     NFT_CONTRACT_ABI,
     NFT_CONTRACT_ADDRESS
-  );
-  try {
-    const result = await nftContract.methods.tokensOfOwner(walletId).call();
-    const nftArray = [];
+    );
+    let nftArray = [];
+    try {
+        const result = await nftContract.methods.tokensOfOwner(walletId).call();
+        for (var i in result) {
+            console.log(result)
+            try {
+                const nftId = result[i];
+                const uri = await nftContract.methods.tokenURI(nftId).call();
 
-    for (var i in result) {
-      try {
-        const nftId = result[i];
-        const uri = await nftContract.methods.tokenURI(nftId).call();
+                await axios
+                .get(uri)
+                .then(async (res) => {
+                    const nft = res.data;
+                    const nftImage = `https://ipfs.io/ipfs/${nft.image.slice(7)}`;
+                    nft.image = nftImage;
+                    nft.nftId = nftId;
 
-        axios
-          .get(uri)
-          .then(async (res) => {
-            const nft = res.data;
-            const nftImage = `https://ipfs.io/ipfs/${nft.image.slice(7)}`;
-            nft.image = nftImage;
-            nft.nftId = nftId;
+                    await axios
+                        .get(
+                            `${process.env.REACT_APP_MERCH_REDEEM_API_URL}/status/${nftId}`
+                        )
+                        .then((res) => {
+                            res.data.message === "NFT never redeemed."
+                                ? (nft.redeemed = false)
+                                : (nft.redeemed = true);
+                            console.log('result from axios', nft)
+                            nftArray.push(nft);
 
-            await axios
-              .get(
-                `${process.env.REACT_APP_MERCH_REDEEM_API_URL}/status/${nftId}`
-              )
-              .then((res) => {
-                res.data.message === "NFT never redeemed."
-                  ? (nft.redeemed = false)
-                  : (nft.redeemed = true);
-
-                nftArray.push(nft);
-                nftArray.push(nft);
-                nftArray.push(nft);
-                nftArray.push(nft);
-                nftArray.push(nft);
-                nftArray.push(nft);
-                nftArray.push(nft);
-                nftArray.push(nft);
-                nftArray.push(nft);
-                nftArray.push(nft);
-              })
-              .catch((err) => {
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            } catch (err) {
                 console.log(err);
-              });
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      } catch (err) {
-        console.log(err);
-      }
+            }
+        }
+    } catch (err) {
+     console.log(err);
     }
 
-    setNfts(nftArray);
-  } catch (err) {
-    console.log(err);
-  }
+    if (nftArray && nftArray.length) {
+        hydrate(true)
+        setNfts(nftArray)
+    }
 };
 
 const signMessage = async function (walletId, message) {
