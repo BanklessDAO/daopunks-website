@@ -148,7 +148,6 @@ const nftCollection = async function (walletId, setNfts, hydrate) {
     try {
         const result = await nftContract.methods.tokensOfOwner(walletId).call();
         for (var i in result) {
-            console.log(result)
             try {
                 const nftId = result[i];
                 const uri = await nftContract.methods.tokenURI(nftId).call();
@@ -169,9 +168,7 @@ const nftCollection = async function (walletId, setNfts, hydrate) {
                             res.data.message === "NFT never redeemed."
                                 ? (nft.redeemed = false)
                                 : (nft.redeemed = true);
-                            console.log('result from axios', nft)
                             nftArray.push(nft);
-
                         })
                         .catch((err) => {
                             console.log(err);
