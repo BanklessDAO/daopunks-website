@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function RedeemNFT({ nfts, setRedeem }) {
+export default function NFT({ nfts, setRedeem }) {
     return (
       <div className="w-11/12 max-w-7xl my-10 grid lg:grid-cols-3 gap-y-10 lg:gap-x-10">
         {nfts && nfts.map((nft, key) => { return (

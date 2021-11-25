@@ -6,7 +6,7 @@ import {
   XCircleIcon,
 } from "@heroicons/react/solid";
 
-import { signMessage } from "../../../api/web3";
+import { signMessage } from "../../api/web3";
 import axios from "axios";
 
 export default function Redeem({ wallet, nftId }) {
@@ -129,7 +129,7 @@ export default function Redeem({ wallet, nftId }) {
           </div>
         )}
         {redemtionStatus === null ? (
-          <div className="w-full flex justify-center px-10 md:px-1 mt-5">
+          <div className="w-full flex justify-center px-10 md:px-0 mt-5">
             <div
               style={{ maxWidth: "15.5rem" }}
               className="w-full flex justify-between"

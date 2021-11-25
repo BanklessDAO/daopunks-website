@@ -4,8 +4,8 @@ import Header from "../components/global/header";
 import BackgroundImage from "../assets/images/backgrounds/team-background.png";
 
 import { walletconnect, nftCollection } from "../api/web3";
-import Redeem from "../components/wallet/redeem/redeem";
-import RedeemNFT from "../components/wallet/redeem/redeem-nft";
+import Redeem from "../components/wallet/redeem";
+import NFT from "../components/wallet/nft";
 
 export default function Wallet() {
   const [wallet, setWallet] = useState(null);
@@ -41,13 +41,13 @@ export default function Wallet() {
           </button>
         </div>
       ) : (
-        <div className="mt-10 w-full flex flex-col items-center modius-bold">
+          <div className="mt-10 w-full h-full flex flex-col items-center modius-bold">
           <div className="text-red text-4xl sm:text-5xl md:text-6xl md:py-12 text-center">
             YOUR DAO PUNKS
           </div>
 
           {nfts === null && !isHydrated ? (
-            <div className="h-full flex items-center justify-center">
+              <div className="-mt-20 w-screen h-full flex items-center justify-center">
               Loading...
             </div>
           ) : (
@@ -55,7 +55,9 @@ export default function Wallet() {
               {redeem !== null ? (
                 <Redeem wallet={wallet} redeem={redeem} nftId={redeem} />
               ) : null}
-              <RedeemNFT nfts={nfts} setRedeem={setRedeem} />
+                  {nfts !== null && nfts.length !== 0 ? <NFT nfts={nfts} setRedeem={setRedeem} /> : (
+                    <div className="-mt-20 w-screen h-full flex items-center justify-center text-2xl">NO NFT's FOUND</div>
+                  )}
             </>
           )}
         </div>
