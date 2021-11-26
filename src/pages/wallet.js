@@ -53,7 +53,7 @@ export default function Wallet() {
           ) : (
             <>
               {redeem !== null ? (
-                <Redeem wallet={wallet} redeem={redeem} nftId={redeem} />
+                <Redeem wallet={wallet} setRedeem={setRedeem} nftId={redeem} />
               ) : null}
                   {nfts !== null && nfts.length !== 0 ? <NFT nfts={nfts} setRedeem={setRedeem} /> : (
                     <div className="-mt-20 w-screen h-full flex items-center justify-center text-2xl">NO NFT's FOUND</div>

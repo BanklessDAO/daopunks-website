@@ -13,7 +13,7 @@ export default function Header() {
     <>
       {showSidebar ? <Sidebar setShowSidebar={setShowSidebar} /> : null}
       <div className="w-full p-8 pb-0 sm:p-10 lg:p-10 flex items-center justify-between">
-        <img className="w-32 md:w-36 lg:w-40" src={Logo} alt="" onClick={()=>{
+        <img className="w-32 md:w-36 lg:w-40 cursor-pointer" src={Logo} alt="" onClick={()=>{
           window.location.href = "/";
         }}/>
         <div
@@ -51,7 +51,7 @@ export default function Header() {
             Contact
           </a>
         </div>
-        <div className="hidden md:flex -mt-1 items-center justify-center gap-x-10">
+        <div className="hidden md:flex -mt-1 items-center justify-center gap-x-10 pr-3 sm:pr-7">
           <div className="flex gap-x-6">
             <a href="https://twitter.com/DAOpunksNFT" target="_blank" rel="noreferrer">
               <img src={Twitter} alt="" />
@@ -60,12 +60,12 @@ export default function Header() {
               <img src={Discord} alt="" />
             </a>
           </div>
-          <a
+          {/* <a
             href="#mint"
             className="flex items-center justify-center px-3 sm:px-7 py-5 rounded bg-black text-white modius-bold text-base sm:text-xl leading-snug text-black outline-none"
           >
             CONNECT
-          </a>
+          </a> */}
         </div>
       </div>
     </>

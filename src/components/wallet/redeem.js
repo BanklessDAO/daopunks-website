@@ -6,10 +6,12 @@ import {
   XCircleIcon,
 } from "@heroicons/react/solid";
 
+import { XCircleIcon as XCircle } from "@heroicons/react/outline";
+
 import { signMessage } from "../../api/web3";
 import axios from "axios";
 
-export default function Redeem({ wallet, nftId }) {
+export default function Redeem({ wallet, nftId, setRedeem }) {
   const [size, setSize] = useState(null);
   const [page, setPage] = useState(1);
   const [orderId, setOrderId] = useState(null);
@@ -62,7 +64,11 @@ export default function Redeem({ wallet, nftId }) {
       style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
       className="absolute w-screen h-screen inset-0 flex items-center justify-center"
     >
-      <div className="w-11/12 md:w-max md:px-16 bg-white py-10 rounded-lg flex flex-col items-center">
+      <div className="relative w-11/12 md:w-max md:px-16 bg-white py-10 rounded-lg flex flex-col items-center">
+        <button onClick={()=> setRedeem(null)} className="absolute top-5 right-5">
+          <XCircle className="w-8 h-8" />
+        </button>
+
         <h1 className="text-red text-2xl md:text-3xl text-center">
           REDEEM <br className="" /> YOUR TEE
         </h1>
