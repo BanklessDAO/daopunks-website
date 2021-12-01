@@ -148,9 +148,9 @@ const nftCollection = async function (walletId, setNfts, hydrate) {
   try {
     const result = await nftContract.methods.tokensOfOwner(walletId).call();
 
-    if(result.length === 0) {
+    if (result.length === 0) {
       hydrate(true);
-    setNfts([]);
+      setNfts([]);
     }
 
     for (var i in result) {

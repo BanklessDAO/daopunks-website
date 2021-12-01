@@ -13,9 +13,9 @@ export default function Header() {
     <>
       {showSidebar ? <Sidebar setShowSidebar={setShowSidebar} /> : null}
       <div className="w-full p-8 pb-0 sm:p-10 lg:p-10 flex items-center justify-between">
-        <img className="w-32 md:w-36 lg:w-40 cursor-pointer" src={Logo} alt="" onClick={()=>{
+        <img className="w-32 md:w-36 lg:w-40 cursor-pointer" src={Logo} alt="" onClick={() => {
           window.location.href = "/";
-        }}/>
+        }} />
         <div
           onClick={() => setShowSidebar(!showSidebar)}
           className="block md:hidden w-10 h-full -mt-3 mr-1 outline flex items-center justify-center"
@@ -41,6 +41,10 @@ export default function Header() {
           /
           <a href="/my-dao-punks" className="text-hover-red">
             My DAO Punks
+          </a>
+          /
+          <a href="/gallery" className="text-hover-red">
+            Gallery
           </a>
           /
           <a

@@ -33,6 +33,7 @@ export default function NFT() {
         const metadata = res.data;
         const nftImage = `https://ipfs.io/ipfs/${metadata.image.slice(7)}`;
         metadata.image = nftImage;
+        console.log(metadata)
         setMetadata(metadata);
       })
       .catch((err) => {
@@ -50,44 +51,67 @@ export default function NFT() {
   });
 
   return (
-    <div className="w-screen flex flex-col items-center modius-bold">
-      <img
-        className="w-11/12 mt-20 rounded-lg"
-        src={metadata ? metadata.image : ""}
-      />
-      <h1 className="my-10 text-center text-3xl">
-        {metadata !== null ? metadata.name : null}
-      </h1>
-      <div className="px-5">
-        <div className="">
-          <h2 className="text-lg">DESCRIPTION</h2>
-          <p
-            style={{ lineHeight: "20px", color: "rgba(0, 0, 0, 0.6)" }}
-            className="open-sans-light text-lg mt-2"
-          >
-            {metadata !== null ? metadata.description : null}
-          </p>
+    <div className="w-screen flex justify-center">
+      <div className="w-max flex flex-col md:flex-row items-center md:items-start md:justify-between modius-bold md:px-5 max-w-screen-xl">
+        <div className="w-11/12 md:w-full">
+          <img
+            className="w-full mt-20 rounded-xl"
+            src={metadata ? metadata.image : ""}
+          />
+          <div className="w-full"></div>
         </div>
-        <div className="mt-5">
-          <h2 className="text-lg">PROPERTIES</h2>
-          <div className="mt-5"></div>
+        <div className="w-full flex flex-col items-center md:items-start md:px-5">
+          <h1 className="md:mt-20 my-10 text-center text-3xl md:text-4xl lg:text-5xl">
+            {metadata !== null ? metadata.name : null}
+          </h1>
+          <div className="px-5 md:px-0">
+            <div>
+              <h2 className="text-lg">DESCRIPTION</h2>
+              <p
+                style={{ lineHeight: "20px", color: "rgba(0, 0, 0, 0.6)" }}
+                className="open-sans-light text-lg mt-2"
+              >
+                {metadata !== null ? metadata.description : null}
+              </p>
+            </div>
+            <div className="mt-5">
+              <h2 className="text-lg">PROPERTIES</h2>
+              <div className="md:w-max mt-5 grid grid-cols-2 md:grid-cols-3 justify-items-start items-start gap-3">
+                {metadata ? metadata.attributes.map((attr, key) => (
+                  <div key={key} style={{
+                    background: "rgba(228, 118, 27, 0.1)",
+                    border: "1px solid rgba(228, 118, 27, 0.5)"
+                  }} className="w-full md:w-max flex flex-col items-center justify-center gap-y-2 rounded p-3 md:px-5  open-sans">
+                    <h3 style={{ color: "rgba(228, 118, 27, 1)" }}>{attr.trait_type}</h3>
+                    <p style={{ color: "rgba(0, 0, 0, 0.6)" }} className="w-max text-center text-sm">
+                      ANON
+                      <br />
+                      25% have this trait
+                    </p>
+                  </div>
+                )) : null}
+              </div>
+            </div>
+          </div>
+          <div className="mt-10 flex flex-col md:flex-row gap-y-5 gap-x-5">
+            <a
+              style={{ backgroundColor: "rgba(0, 133, 255, 0.5)" }}
+              className="px-auto w-72 h-14 rounded-lg text-white flex items-center justify-center"
+              href={nftId ? `https://daopunks.fra1.digitaloceanspaces.com/resized/${nftId}.png` : null}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              SEE ON OPENSEA
+            </a>
+            <button
+              style={{ backgroundColor: "rgb(255, 0, 0)" }}
+              className="mb-20 px-auto w-72 h-14 rounded-lg text-white"
+            >
+              REDEEM TEE
+            </button>
+          </div>
         </div>
       </div>
-      <a
-        style={{ backgroundColor: "rgba(0, 133, 255, 0.5)" }}
-        className="px-auto w-72 h-14 rounded-lg text-white flex items-center justify-center"
-        href={nftId ? `${openSeaNFTURL}/${nftId}` : null}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        SEE ON OPENSEA
-      </a>
-      <button
-        style={{ backgroundColor: "rgb(255, 0, 0)" }}
-        className="my-5 px-auto w-72 h-14 rounded-lg text-white"
-      >
-        REDEEM TEE
-      </button>
     </div>
   );
 }
