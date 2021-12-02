@@ -4,14 +4,14 @@ import Header from "../components/global/header";
 import BackgroundImage from "../assets/images/backgrounds/team-background.png";
 
 import { walletconnect, nftCollection } from "../api/web3";
-import Redeem from "../components/wallet/redeem";
+import Redeem from "../components/wallet/redeem/index";
 import NFT from "../components/wallet/nft";
 
 export default function Wallet() {
   const [wallet, setWallet] = useState(null);
   const [nfts, setNfts] = useState(null);
   const [redeem, setRedeem] = useState(null);
-  const [isHydrated, hydrate] = useState(false)
+  const [isHydrated, hydrate] = useState(false);
 
   useEffect(() => {
     if (wallet !== null && !isHydrated) {
@@ -41,13 +41,13 @@ export default function Wallet() {
           </button>
         </div>
       ) : (
-          <div className="mt-10 w-full h-full flex flex-col items-center modius-bold">
+        <div className="mt-10 w-full h-full flex flex-col items-center modius-bold">
           <div className="text-red text-4xl sm:text-5xl md:text-6xl md:py-12 text-center">
             YOUR DAO PUNKS
           </div>
 
           {nfts === null && !isHydrated ? (
-              <div className="-mt-20 w-screen h-full flex items-center justify-center">
+            <div className="-mt-20 w-screen h-full flex items-center justify-center">
               Loading...
             </div>
           ) : (
@@ -55,9 +55,13 @@ export default function Wallet() {
               {redeem !== null ? (
                 <Redeem wallet={wallet} setRedeem={setRedeem} nftId={redeem} />
               ) : null}
-                  {nfts !== null && nfts.length !== 0 ? <NFT nfts={nfts} setRedeem={setRedeem} /> : (
-                    <div className="-mt-20 w-screen h-full flex items-center justify-center text-2xl">NO NFT's FOUND</div>
-                  )}
+              {nfts !== null && nfts.length !== 0 ? (
+                <NFT nfts={nfts} setRedeem={setRedeem} />
+              ) : (
+                <div className="-mt-20 w-screen h-full flex items-center justify-center text-2xl">
+                  NO NFT's FOUND
+                </div>
+              )}
             </>
           )}
         </div>
