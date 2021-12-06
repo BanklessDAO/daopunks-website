@@ -176,7 +176,7 @@ export default function NFT() {
                                 style={{ color: "rgba(0, 0, 0, 0.6)" }}
                                 className="w-max text-center text-sm"
                               >
-                                ANON
+                                {attr.value}
                                 <br />
                                 25% have this trait
                               </p>
