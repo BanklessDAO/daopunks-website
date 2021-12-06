@@ -16,10 +16,12 @@ export default function NftGallery() {
       >
         <Header />
       </div>
-      <Router>
-        <Route path="/gallery/*" component={NFT} />
-        <Route path="/gallery" component={Gallery} exact />
-      </Router>
+      <div className="h-full">
+        <Router>
+          <Route path="/gallery/*" component={NFT} />
+          <Route path="/gallery" component={Gallery} exact />
+        </Router>
+      </div>
     </div>
   );
 }

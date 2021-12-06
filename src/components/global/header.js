@@ -22,7 +22,7 @@ export default function Header() {
         >
           <img className="w-10" src={HamburgerIcon} alt="" />
         </div>
-        <div className="hidden xl:flex modius-bold text-white text-lg gap-x-2 2xl:gap-x-6">
+        <div className="hidden lg:flex modius-bold text-white text-lg gap-x-2 2xl:gap-x-6">
           {/* <a to="#about" href="#about" className="text-hover-red">
             About
           </a>
