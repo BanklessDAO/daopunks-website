@@ -37,6 +37,25 @@ export default function NFT() {
         metadata.imageLoaded = false;
         metadata.openseaURL = `${openseaBaseURL}/${nftId}`;
         setMetadata(metadata);
+
+        getRedemptionStatus();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  async function getRedemptionStatus() {
+    await axios
+      .get(`${process.env.REACT_APP_MERCH_REDEEM_API_URL}/status/${nftId}`)
+      .then((res) => {
+        const redeemed =
+          res.data.message === "NFT never redeemed." ? false : true;
+        console.log(redeemed);
+        setMetadata((metadata) => ({
+          ...metadata,
+          redeemed: redeemed,
+        }));
       })
       .catch((err) => {
         console.log(err);
@@ -71,6 +90,10 @@ export default function NFT() {
       getOtherDAOPunks();
     }
   });
+
+  metadata && metadata.redeemed
+    ? console.log(metadata.redeemed)
+    : console.log(null);
 
   return (
     <div className="w-screen h-full flex flex-col items-center">
@@ -136,32 +159,34 @@ export default function NFT() {
                   <div className="mt-5">
                     <h2 className="text-lg">PROPERTIES</h2>
                     <div className="lg:w-max mt-5 grid grid-cols-2 lg:grid-cols-3 justify-items-start items-start gap-3">
-                      {metadata.attributes.map((attr, key) => (
-                        <div
-                          key={key}
-                          style={{
-                            background: "rgba(228, 118, 27, 0.1)",
-                            border: "1px solid rgba(228, 118, 27, 0.5)",
-                          }}
-                          className="w-full lg:w-max flex flex-col items-center justify-center gap-y-2 rounded p-3 lg:px-5  open-sans"
-                        >
-                          <h3 style={{ color: "rgba(228, 118, 27, 1)" }}>
-                            {attr.trait_type}
-                          </h3>
-                          <p
-                            style={{ color: "rgba(0, 0, 0, 0.6)" }}
-                            className="w-max text-center text-sm"
-                          >
-                            ANON
-                            <br />
-                            25% have this trait
-                          </p>
-                        </div>
-                      ))}
+                      {metadata && metadata.attributes
+                        ? metadata.attributes.map((attr, key) => (
+                            <div
+                              key={key}
+                              style={{
+                                background: "rgba(228, 118, 27, 0.1)",
+                                border: "1px solid rgba(228, 118, 27, 0.5)",
+                              }}
+                              className="w-full lg:w-max flex flex-col items-center justify-center gap-y-2 rounded p-3 lg:px-5  open-sans"
+                            >
+                              <h3 style={{ color: "rgba(228, 118, 27, 1)" }}>
+                                {attr.trait_type}
+                              </h3>
+                              <p
+                                style={{ color: "rgba(0, 0, 0, 0.6)" }}
+                                className="w-max text-center text-sm"
+                              >
+                                ANON
+                                <br />
+                                25% have this trait
+                              </p>
+                            </div>
+                          ))
+                        : null}
                     </div>
                   </div>
                 </div>
-                <div className="mt-8 flex flex-col lg:flex-row gap-y-5 gap-x-5">
+                <div className="mt-8 flex flex-col lg:flex-row gap-y-5 gap-x-3">
                   <a
                     style={{ backgroundColor: "rgba(0, 133, 255, 0.5)" }}
                     className="px-auto w-72 h-14 rounded-lg text-white flex items-center justify-center"
@@ -171,17 +196,21 @@ export default function NFT() {
                   >
                     SEE ON OPENSEA
                   </a>
-                  <button
-                    style={{ backgroundColor: "rgb(255, 0, 0)" }}
-                    className="mb-20 px-auto w-72 h-14 rounded-lg text-white"
-                  >
-                    REDEEM TEE
-                  </button>
+                  {metadata.redeemed === null ? (
+                    <div className="w-72 h-14 bg-gray-300 rounded-lg animate-pulse"></div>
+                  ) : (
+                    <button
+                      style={{ backgroundColor: "rgb(255, 0, 0)" }}
+                      className="px-auto w-72 h-14 rounded-lg text-white"
+                    >
+                      {metadata.redeemed ? "REDEEMED" : "NOT REDEEMED"}
+                    </button>
+                  )}
                 </div>
               </div>
             ) : null}
           </div>
-          <div className="w-full flex flex-col items-center justify-center mt-36">
+          <div className="w-full flex flex-col items-center justify-center mt-52">
             <h2 className="text-5xl text-red modius-bold">OTHER DAO PUNKS</h2>
             <div className="mt-10 mb-52 flex gap-x-5">
               {otherDAOPunks
