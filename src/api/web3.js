@@ -162,7 +162,7 @@ const nftCollection = async function (walletId, setNfts, hydrate) {
           .get(uri)
           .then(async (res) => {
             const nft = res.data;
-            const nftImage = `https://ipfs.io/ipfs/${nft.image.slice(7)}`;
+            const nftImage = `https://daopunks.fra1.digitaloceanspaces.com/resized/${nftId}.png`;
             nft.image = nftImage;
             nft.nftId = nftId;
 
