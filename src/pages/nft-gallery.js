@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 export default function NftGallery() {
   return (
-    <div style={{ minHeight: "100vh" }} className={`h-screen flex flex-col`}>
+    <div className="h-screen flex flex-col">
       <div
         className="pb-8 sm:pb-0"
         style={{

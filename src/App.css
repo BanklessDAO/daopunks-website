@@ -102,3 +102,8 @@ html {
     max-height: 32rem;
   }
 }
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  scrollbar-width: none;
+}

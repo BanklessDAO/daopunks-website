@@ -158,7 +158,7 @@ export default function NFT() {
                   </div>
                   <div className="mt-5">
                     <h2 className="text-lg">PROPERTIES</h2>
-                    <div className="lg:w-max mt-5 grid grid-cols-2 lg:grid-cols-3 justify-items-start items-start gap-3">
+                    <div className="lg:w-max mt-5 grid grid-cols-2 lg:grid-cols-3 content-start gap-x-3 gap-y-3">
                       {metadata && metadata.attributes
                         ? metadata.attributes.map((attr, key) => (
                             <div
@@ -176,7 +176,7 @@ export default function NFT() {
                                 style={{ color: "rgba(0, 0, 0, 0.6)" }}
                                 className="w-max text-center text-sm"
                               >
-                                {attr.value}
+                                ANON
                                 <br />
                                 25% have this trait
                               </p>
