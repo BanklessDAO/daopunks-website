@@ -122,7 +122,7 @@ export default function NFT() {
         </div>
       ) : (
         <>
-          <div className="w-max flex flex-col lg:flex-row items-center lg:items-start lg:justify-between lg:px-5 max-w-screen-xl  modius-bold">
+          <div className="w-screen flex flex-col lg:flex-row items-center lg:items-start lg:justify-between lg:px-5 max-w-screen-xl modius-bold">
             <div className="w-11/12 lg:w-full mt-20">
               <div
                 style={{ aspectRatio: "1 / 1" }}
@@ -140,7 +140,7 @@ export default function NFT() {
             </div>
             {metadata ? (
               <div className="w-full flex flex-col items-center lg:items-start lg:px-5">
-                <h1 className="lg:mt-20 my-10 text-center text-3xl lg:text-5xl">
+                <h1 className="lg:mt-20 my-10 text-center text-3xl lg:text-5xl px-3 lg:px-0">
                   {metadata.name}
                 </h1>
                 <div className="px-5 lg:px-0">
@@ -210,17 +210,20 @@ export default function NFT() {
               </div>
             ) : null}
           </div>
-          <div className="w-full flex flex-col items-center justify-center mt-52">
-            <h2 className="text-5xl text-red modius-bold">OTHER DAO PUNKS</h2>
-            <div className="mt-10 mb-52 flex gap-x-5">
+          <div className="w-full flex flex-col items-center justify-center mt-20 lg:mt-52 mb-20 lg:mb-52">
+            <h2 className="text-5xl text-red modius-bold text-center">
+              OTHER DAO PUNKS
+            </h2>
+            <div className="w-full mt-10 flex flex-col lg:flex-row items-center justify-center gap-y-5 lg:gap-x-5">
               {otherDAOPunks
                 ? otherDAOPunks.map((otherDaoPunk, key) => (
-                    <a key={key} href={otherDaoPunk.nftURL}>
-                      <img
-                        src={otherDaoPunk.nftImage}
-                        className="w-72 h-72 rounded-lg"
-                      />
-                    </a>
+                    <img
+                      src={otherDaoPunk.nftImage}
+                      className="w-11/12 lg:w-72 rounded-lg cursor-pointer"
+                      onClick={() =>
+                        (window.location.href = otherDaoPunk.nftURL)
+                      }
+                    />
                   ))
                 : null}
             </div>
