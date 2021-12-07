@@ -13,9 +13,14 @@ export default function Header() {
     <>
       {showSidebar ? <Sidebar setShowSidebar={setShowSidebar} /> : null}
       <div className="w-full p-8 pb-0 sm:p-10 lg:p-10 flex items-center justify-between">
-        <img className="w-32 md:w-36 lg:w-40 cursor-pointer" src={Logo} alt="" onClick={() => {
-          window.location.href = "/";
-        }} />
+        <img
+          className="w-32 md:w-36 lg:w-40 cursor-pointer"
+          src={Logo}
+          alt=""
+          onClick={() => {
+            window.location.href = "/";
+          }}
+        />
         <div
           onClick={() => setShowSidebar(!showSidebar)}
           className="block md:hidden w-10 h-full -mt-3 mr-1 outline flex items-center justify-center"
@@ -40,27 +45,36 @@ export default function Header() {
           </a>
           /
           <a href="/my-dao-punks" className="text-hover-red">
-            My DAO Punks
+            Redeem Shirt
           </a>
           /
           <a href="/gallery" className="text-hover-red">
-            Gallery
+            Search
           </a>
           /
           <a
             href="https://twitter.com/DAOpunksNFT"
             target="_blank"
-            className="text-hover-red" rel="noreferrer"
+            className="text-hover-red"
+            rel="noreferrer"
           >
             Contact
           </a>
         </div>
         <div className="hidden md:flex -mt-1 items-center justify-center gap-x-10 pr-3 sm:pr-7">
           <div className="flex gap-x-6">
-            <a href="https://twitter.com/DAOpunksNFT" target="_blank" rel="noreferrer">
+            <a
+              href="https://twitter.com/DAOpunksNFT"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={Twitter} alt="" />
             </a>
-            <a href="https://t.co/sbisMPDiJy?amp=1" target="_blank" rel="noreferrer">
+            <a
+              href="https://t.co/sbisMPDiJy?amp=1"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={Discord} alt="" />
             </a>
           </div>
