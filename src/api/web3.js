@@ -26,6 +26,8 @@ const walletconnect = async function (setWallet, setNftSupply) {
       providerOptions,
     });
 
+    await web3Modal.clearCachedProvider();
+
     provider = await web3Modal.connect();
     const web3 = new Web3(provider);
     const accounts = await web3.eth.getAccounts();
@@ -171,7 +173,7 @@ const nftCollection = async function (walletId, setNfts, hydrate) {
                 `${process.env.REACT_APP_MERCH_REDEEM_API_URL}/status/${nftId}`
               )
               .then((res) => {
-                res.data.message === "NFT never redeemed."
+                res.data.message === "NFT never redeemed." || res.data.message === "Owner started redemption process but didn't completed."
                   ? (nft.redeemed = false)
                   : (nft.redeemed = true);
                 nftArray.push(nft);
