@@ -43,7 +43,7 @@ export default function OrderConfirmation({
         onClick={confirmOrder}
         className="w-full mt-2 rounded py-2 bg-black text-white"
       >
-        SUMBIT
+        SUBMIT
       </button>
     </div>
   ) : (
