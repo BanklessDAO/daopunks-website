@@ -32,7 +32,7 @@ export default function OrderConfirmation({
 
   return redemtionStatus === null ? (
     <div style={{ maxWidth: "15rem" }} className="mt-10 mb-5">
-      <div className="absolute ml-3 -mt-2 px-2 bg-white text-sm">Order Id</div>
+      <div className="absolute ml-3 -mt-2 px-2 bg-white text-sm">Order Number</div>
       <input
         type="text"
         value={orderId}
