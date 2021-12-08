@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { signMessage } from "../../../api/web3";
 
-export default function RedeemTee({
-  redemtionStatus,
-  wallet,
-  nftId,
-  size,
-  setRedemtionStatus,
-  setPage,
-}) {
+export default function RedeemTee({ wallet, nftId, size, page, setPage }) {
   const [shopifyProductURL, setShopifyProductURL] = useState(null);
+
+  useEffect(() => {
+    if (shopifyProductURL) {
+      setPage(3);
+    }
+  }, [shopifyProductURL]);
 
   async function shopifyRedirect() {
     if (!shopifyProductURL) {
@@ -30,17 +29,25 @@ export default function RedeemTee({
         });
     } else {
       window.open(shopifyProductURL, "_blank").focus();
-      setPage(3);
+      setPage(4);
     }
   }
 
   return (
-    <button
-      onClick={shopifyRedirect}
-      className="mt-10 mb-5 px-5 py-3 rounded red text-white"
-      href={shopifyProductURL ? shopifyProductURL : null}
-    >
-      {!shopifyProductURL ? "REDEEM TEE" : "PLACE ORDER"}
-    </button>
+    <>
+      {page === 3 ? (
+        <div style={{ maxWidth: "15rem" }} className="mt-8 text-center">
+          Click below to place your order and return here to enter your order #
+        </div>
+      ) : null}
+
+      <button
+        onClick={shopifyRedirect}
+        className="mt-8 mb-5 px-5 py-3 rounded red text-white"
+        href={shopifyProductURL ? shopifyProductURL : null}
+      >
+        {!shopifyProductURL ? "SIGN MESSAGE" : "GO TO SHOPIFY"}
+      </button>
+    </>
   );
 }

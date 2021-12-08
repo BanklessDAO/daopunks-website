@@ -19,8 +19,6 @@ export default function OrderConfirmation({
         address: wallet,
       })
       .then((res) => {
-        console.log(res.data);
-
         if (res.data.message === "Redemption confirmed successfully.") {
           setRedemtionStatus("sucessful");
         }
@@ -32,7 +30,9 @@ export default function OrderConfirmation({
 
   return redemtionStatus === null ? (
     <div style={{ maxWidth: "15rem" }} className="mt-10 mb-5">
-      <div className="absolute ml-3 -mt-2 px-2 bg-white text-sm">Order Number</div>
+      <div className="absolute ml-3 -mt-2 px-2 bg-white text-sm">
+        Order Number
+      </div>
       <input
         type="text"
         value={orderId}
@@ -47,11 +47,17 @@ export default function OrderConfirmation({
       </button>
     </div>
   ) : (
-    <div className="mt-10 mb-5">
+    <div className="w-max flex flex-col items-center mt-10 mb-5 gap-y-3 text-2xl">
       {redemtionStatus === "sucessful" ? (
-        <CheckCircleIcon className="text-green-400 h-16 w-16" />
+        <>
+          <CheckCircleIcon className="text-green-400 h-16 w-16" />
+          SUCESSFUL
+        </>
       ) : (
-        <XCircleIcon className="text-red-400 h-16 w-16" />
+        <>
+          <XCircleIcon className="text-red-400 h-16 w-16" />
+          FAILED
+        </>
       )}
     </div>
   );

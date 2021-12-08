@@ -51,7 +51,6 @@ export default function NFT() {
       .then((res) => {
         const redeemed =
           res.data.message === "NFT never redeemed." ? false : true;
-        console.log(redeemed);
         setMetadata((metadata) => ({
           ...metadata,
           redeemed: redeemed,
@@ -90,10 +89,6 @@ export default function NFT() {
       getOtherDAOPunks();
     }
   });
-
-  metadata && metadata.redeemed
-    ? console.log(metadata.redeemed)
-    : console.log(null);
 
   return (
     <div className="w-screen h-full flex flex-col items-center">

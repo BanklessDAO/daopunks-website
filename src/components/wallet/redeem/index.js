@@ -43,6 +43,8 @@ export default function Redeem({ wallet, nftId, setRedeem }) {
             {page === 1
               ? "SELECT SIZE"
               : page === 2
+              ? "SIGN MESSAGE"
+              : page === 3
               ? "GO TO SHOPIFY"
               : "CONFIRMED ORDER"}
           </div>
@@ -60,13 +62,14 @@ export default function Redeem({ wallet, nftId, setRedeem }) {
         </div>
         {page === 1 ? (
           <Size size={size} setSize={setSize} />
-        ) : page === 2 ? (
+        ) : page === 2 || page === 3 ? (
           <RedeemTee
             redemtionStatus={redemtionStatus}
             wallet={wallet}
             nftId={nftId}
             size={size}
             setRedemtionStatus={setRedemtionStatus}
+            page={page}
             setPage={setPage}
           />
         ) : (
@@ -86,7 +89,13 @@ export default function Redeem({ wallet, nftId, setRedeem }) {
             >
               {page !== 1 ? (
                 <button
-                  onClick={() => (page !== 1 ? setPage(page - 1) : null)}
+                  onClick={() =>
+                    page !== 1
+                      ? page !== 4
+                        ? setPage(page - 1)
+                        : setPage(2)
+                      : null
+                  }
                   className="flex p-2 rounded-full"
                 >
                   <ArrowSmLeftIcon className="h-6 w-6" />
@@ -95,9 +104,15 @@ export default function Redeem({ wallet, nftId, setRedeem }) {
               ) : (
                 <div></div>
               )}
-              {page !== 3 ? (
+              {page !== 4 ? (
                 <button
-                  onClick={() => (page !== 3 ? setPage(page + 1) : null)}
+                  onClick={() =>
+                    page !== 3
+                      ? page !== 2
+                        ? setPage(page + 1)
+                        : setPage(4)
+                      : null
+                  }
                   className="flex p-2 rounded-full"
                 >
                   Next

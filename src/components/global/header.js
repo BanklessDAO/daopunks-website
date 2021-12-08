@@ -48,10 +48,6 @@ export default function Header() {
             Redeem Shirt
           </a>
           /
-          <a href="/gallery" className="text-hover-red">
-            Search
-          </a>
-          /
           <a
             href="https://twitter.com/DAOpunksNFT"
             target="_blank"
