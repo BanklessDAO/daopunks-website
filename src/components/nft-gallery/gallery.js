@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-expressions */
 import React, { useEffect, useState } from "react";
 
-import { SearchIcon } from "@heroicons/react/solid";
 // import VisibilitySensor from "react-visibility-sensor";
 
 export default function Gallery() {

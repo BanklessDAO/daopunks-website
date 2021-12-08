@@ -9,7 +9,7 @@ export default function RedeemTee({ wallet, nftId, size, page, setPage }) {
     if (shopifyProductURL) {
       setPage(3);
     }
-  }, [shopifyProductURL]);
+  }, [shopifyProductURL, setPage]);
 
   async function shopifyRedirect() {
     if (!shopifyProductURL) {
