@@ -50,7 +50,7 @@ export default function Redeem({ wallet, nftId, setRedeem }) {
           </div>
           {page === 1 ? (
             <a
-              href="https://media.discordapp.net/attachments/902231880575877121/917748362009264128/size_chart_dpx.jpg"
+              href="https://media.discordapp.net/attachments/902231880575877121/917964691672793109/size_chart_dpx.jpg"
               target="_blank"
               rel="noreferrer"
               className="mt-8 flex text-indigo-600"

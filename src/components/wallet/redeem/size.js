@@ -1,8 +1,8 @@
 export default function Size({ size, setSize }) {
-  const sizes = ["S", "M", "L", "XL", "2XL", "3XL"];
+  const sizes = ["S", "M", "L", "XL", "2XL"];
 
   return (
-    <div className="mt-10 grid grid-cols-3 gap-x-3 gap-y-3">
+    <div className="w-full mt-10 grid grid-cols-3 gap-x-3 gap-y-3 justify-items-strech">
       {sizes.map((teeSize, key) => (
         <button
           key={key}
