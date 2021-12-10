@@ -2,11 +2,12 @@
 /* eslint-disable no-unused-expressions */
 import React, { useEffect, useState } from "react";
 
-// import VisibilitySensor from "react-visibility-sensor";
+import VisibilitySensor from "react-visibility-sensor";
 
 export default function Gallery() {
   const [query, setQuery] = useState("");
   const [nfts, setNfts] = useState(null);
+  const [isHydrated, hydrate] = useState(false);
 
   useEffect(() => {
     try {
@@ -17,6 +18,12 @@ export default function Gallery() {
   }, [query]);
 
   async function getNFTs() {
+    hydrate(false);
+
+    if (query && query === "") {
+      setQuery(null);
+    }
+
     let executeQuery = false;
     if (query.length > 0) {
       const nftId = parseInt(query);
@@ -29,13 +36,14 @@ export default function Gallery() {
 
     console.log(executeQuery);
 
-    if (executeQuery) {
+    if (executeQuery && query !== "") {
       setNfts([
         {
           nftId: query,
           nftImageURL: `https://daopunks.fra1.digitaloceanspaces.com/resized/${query}.png`,
         },
       ]);
+      hydrate(true);
     } else {
       const nftArray = nfts === null ? [] : nfts;
 
@@ -43,12 +51,17 @@ export default function Gallery() {
         const nftId = Math.floor(Math.random() * (1111 - 1 + 1) + 1);
 
         nftArray.push({
-          nftId: nftId,
+          nftId: `${nftId}`,
           nftImageURL: `https://daopunks.fra1.digitaloceanspaces.com/resized/${nftId}.png`,
         });
+
+        console.log(nftArray);
       }
 
-      setNfts(nftArray);
+      if (nftArray && nftArray.length > 0) {
+        await setNfts(nftArray);
+        hydrate(true);
+      }
     }
   }
 
@@ -76,7 +89,7 @@ export default function Gallery() {
         </div>
       </div>
 
-      {nfts ? (
+      {nfts && isHydrated ? (
         <div className="mt-10 lg:mt-20 pb-10 w-full px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-4 gap-3">
           {nfts.map((nft, key) => (
             <a key={nft.nftId} href={`/gallery/${nft.nftId}`}>
@@ -86,17 +99,13 @@ export default function Gallery() {
         </div>
       ) : null}
 
-      {/* <VisibilitySensor>
+      <VisibilitySensor>
         {({ isVisible }) => {
-          // if (nfts !== null && isVisible) {
+          // if (isVisible && isHydrated && nfts) {
           //   getNFTs();
           // }
-
           return (
-            <div
-              onClick={() => getNFTs()}
-              className="w-full py-10 flex items-center justify-center"
-            >
+            <div className="w-full py-10 flex items-center justify-center">
               <svg
                 className="w-max h-max animate-spin -ml-1 mr-3 h-8 w-8 text-red"
                 xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +129,7 @@ export default function Gallery() {
             </div>
           );
         }}
-      </VisibilitySensor> */}
+      </VisibilitySensor>
     </div>
   );
 }
