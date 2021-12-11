@@ -28,24 +28,33 @@ export default function Header() {
           <img className="w-10" src={HamburgerIcon} alt="" />
         </div>
         <div className="hidden lg:flex modius-bold text-white text-lg gap-x-2 2xl:gap-x-6">
-          {/* <a to="#about" href="#about" className="text-hover-red">
+          {/* <a
+            to="#a
+          bout"
+            href="/#about"
+            className="text-hover-red"
+          >
             About
           </a>
           / */}
-          {/* <a href="#mint" className="text-hover-red">
+          <a href="/#mint" className="text-hover-red">
             Mint
           </a>
-          / */}
-          <a href="#roadmap" className="text-hover-red">
+          /
+          <a href="/#roadmap" className="text-hover-red">
             Roadmap
           </a>
           /
-          <a href="#team" className="text-hover-red">
+          <a href="/#team" className="text-hover-red">
             Team
           </a>
           /
           <a href="/my-dao-punks" className="text-hover-red">
             Redeem Shirt
+          </a>
+          /
+          <a href="/gallery" className="text-hover-red">
+            Search
           </a>
           /
           <a
