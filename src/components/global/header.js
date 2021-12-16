@@ -49,7 +49,7 @@ export default function Header() {
             Team
           </a>
           /
-          <a href="/my-dao-punks" className="text-hover-red">
+          <a href="/redeem" className="text-hover-red">
             Redeem Shirt
           </a>
           /
@@ -76,7 +76,7 @@ export default function Header() {
               <img src={Twitter} alt="" />
             </a>
             <a
-              href="https://t.co/sbisMPDiJy?amp=1"
+              href="https://discord.gg/daopunks"
               target="_blank"
               rel="noreferrer"
             >

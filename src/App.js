@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <Route path="/gallery" component={NftGallery} />
-      <Route path="/my-dao-punks" component={Wallet} exact />
+      <Route path="/redeem" component={Wallet} exact />
       <Route path="/" component={Home} exact />
     </Router>
   );

@@ -173,7 +173,9 @@ const nftCollection = async function (walletId, setNfts, hydrate) {
                 `${process.env.REACT_APP_MERCH_REDEEM_API_URL}/status/${nftId}`
               )
               .then((res) => {
-                res.data.message === "NFT never redeemed." || res.data.message === "Owner started redemption process but didn't completed."
+                res.data.message === "NFT never redeemed." ||
+                res.data.message ===
+                  "Owner started redemption process but didn't completed."
                   ? (nft.redeemed = false)
                   : (nft.redeemed = true);
                 nftArray.push(nft);
@@ -207,7 +209,6 @@ const signMessage = async function (walletId, message) {
       res(signature);
     } catch (err) {
       console.log(err);
-      rej(err);
     }
   });
 };

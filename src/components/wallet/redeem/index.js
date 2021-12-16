@@ -89,13 +89,7 @@ export default function Redeem({ wallet, nftId, setRedeem }) {
             >
               {page !== 1 ? (
                 <button
-                  onClick={() =>
-                    page !== 1
-                      ? page !== 4
-                        ? setPage(page - 1)
-                        : setPage(2)
-                      : null
-                  }
+                  onClick={() => setPage(page - 1)}
                   className="flex p-2 rounded-full"
                 >
                   <ArrowSmLeftIcon className="h-6 w-6" />
@@ -106,13 +100,7 @@ export default function Redeem({ wallet, nftId, setRedeem }) {
               )}
               {page !== 4 ? (
                 <button
-                  onClick={() =>
-                    page !== 3
-                      ? page !== 2
-                        ? setPage(page + 1)
-                        : setPage(4)
-                      : null
-                  }
+                  onClick={() => setPage(page + 1)}
                   className="flex p-2 rounded-full"
                 >
                   Next

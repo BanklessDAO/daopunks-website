@@ -35,7 +35,7 @@ export default function Sidebar({ setShowSidebar }) {
           <a href="#team" className="text-hover-red">
             TEAM
           </a>
-          <a href="/my-dao-punks" className="text-hover-red">
+          <a href="/redeem" className="text-hover-red">
             MY DAO PUNKS
           </a>
           <a
@@ -50,7 +50,7 @@ export default function Sidebar({ setShowSidebar }) {
           <a href="https://twitter.com/DAOpunksNFT" target="_blank">
             <img src={Twitter} alt="" />
           </a>
-          <a href="https://t.co/sbisMPDiJy?amp=1" target="_blank">
+          <a href="https://discord.gg/daopunks" target="_blank">
             <img src={Discord} alt="" />
           </a>
         </div>
