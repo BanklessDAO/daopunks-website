@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import BackgroundImage from "../../../assets/images/backgrounds/mint-background.png";
 
 import { walletconnect, mint, nftCollection } from "../../../api/web3";
@@ -66,7 +66,7 @@ function MintNFT({ wallet, setWallet, nftSupply, setNftSupply }) {
 
 export default function Mint() {
   const [wallet, setWallet] = useState(null);
-  const [nftSupply, setNftSupply] = useState(false);
+  const [nftSupply, setNftSupply] = useState(null);
 
   return (
     <div

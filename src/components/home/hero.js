@@ -1,18 +1,9 @@
-/* eslint-disable react/jsx-no-target-blank */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
 import BackgroundImage from "../../assets/images/backgrounds/hero-background.png";
-import Logo from "../../assets/images/hero/logo.png";
-import HamburgerIcon from "../../assets/images/hero/hamburger-icon.png";
 import HeroImage from "../../assets/images/hero/hero-image.png";
-import Sidebar from "./sidebar";
 
-import Twitter from "../../assets/images/sidebar/twitter.png";
-import Discord from "../../assets/images/sidebar/discord.png";
+import Header from "../global/header";
 
 export default function Hero() {
-  const [showSidebar, setShowSidebar] = useState(false);
-
   return (
     <div
       id="#"
@@ -21,58 +12,7 @@ export default function Hero() {
       }}
       className="w-screen h-screen bg-cover flex flex-col"
     >
-      {showSidebar ? <Sidebar setShowSidebar={setShowSidebar} /> : null}
-      <div className="w-full p-8 pb-0 sm:p-10 lg:p-14 flex items-center justify-between">
-        <img className="w-32 md:w-36 lg:w-40" src={Logo} alt="" />
-        <div
-          onClick={() => setShowSidebar(!showSidebar)}
-          className="block md:hidden w-10 h-10 -mt-3 mr-1 outline flex items-center justify-center"
-        >
-          <img className="w-10" src={HamburgerIcon} alt="" />
-        </div>
-        <div className="hidden xl:flex modius-bold text-white text-lg gap-x-2 2xl:gap-x-6">
-          <a to="#about" href="#about" className="text-hover-red">
-            About
-          </a>
-          /
-          <a href="#mint" className="text-hover-red">
-            Mint
-          </a>
-          /
-          <a href="#roadmap" className="text-hover-red">
-            Roadmap
-          </a>
-          /
-          <a href="#team" className="text-hover-red">
-            Team
-          </a>
-          /
-          <a
-            href="https://twitter.com/DAOpunksNFT"
-            target="_blank"
-            className="text-hover-red"
-          >
-            Contact
-          </a>
-        </div>
-        <div className="hidden md:flex -mt-1 items-center justify-center gap-x-10">
-          <div className="flex gap-x-6">
-            <a href="https://twitter.com/DAOpunksNFT" target="_blank">
-              <img src={Twitter} alt="" />
-            </a>
-            <a href="https://t.co/sbisMPDiJy?amp=1" target="_blank">
-              <img src={Discord} alt="" />
-            </a>
-          </div>
-          <a
-            href="#mint"
-            className="flex items-center justify-center px-3 sm:px-7 py-5 rounded bg-black text-white modius-bold text-base sm:text-xl leading-snug text-black outline-none"
-          >
-            CONNECT
-          </a>
-        </div>
-      </div>
-
+      <Header />
       <div className="w-full h-full flex items-center justify-center">
         <div className="w-full h-full lg:max-w-5xl flex flex-col xl:flex-row-reverse items-center justify-between mb-10">
           <div
