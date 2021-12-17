@@ -23,27 +23,28 @@ export default function Sidebar({ setShowSidebar }) {
 
       <div className="absolute left-0 bottom-0 pl-8 pb-20 flex flex-col gap-y-10">
         <div className="flex flex-col gap-y-5 text-white modius-bold text-2xl">
-          <a href="#about" className="text-hover-red">
-            ABOUT
+          <a href="/#mint" className="text-hover-red">
+            Mint
           </a>
-          <a href="#mint" className="text-hover-red">
-            MINT
+          <a href="/#roadmap" className="text-hover-red">
+            Roadmap
           </a>
-          <a href="#roadmap" className="text-hover-red">
-            ROADMAP
-          </a>
-          <a href="#team" className="text-hover-red">
-            TEAM
+          <a href="/#team" className="text-hover-red">
+            Team
           </a>
           <a href="/redeem" className="text-hover-red">
-            MY DAO PUNKS
+            Redeem Shirt
+          </a>
+          <a href="/gallery" className="text-hover-red">
+            Search
           </a>
           <a
             href="https://twitter.com/DAOpunksNFT"
             target="_blank"
             className="text-hover-red"
+            rel="noreferrer"
           >
-            CONTACT
+            Contact
           </a>
         </div>
         <div className="flex gap-x-8">

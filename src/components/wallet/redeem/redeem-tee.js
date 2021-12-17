@@ -10,20 +10,24 @@ export default function RedeemTee({ wallet, nftId, size, page, setPage }) {
 
   async function shopifyRedirect() {
     if (page === 2 && !shopifyProductURL) {
-      const signature = await signMessage(wallet, `REDEEM:${nftId}:${size}`);
+      if (size === null) {
+        setPage(1);
+      } else {
+        const signature = await signMessage(wallet, `REDEEM:${nftId}:${size}`);
 
-      axios
-        .post(`${process.env.REACT_APP_MERCH_REDEEM_API_URL}/redeem`, {
-          signature: signature,
-          request: `REDEEM:${nftId}:${size}`,
-          address: wallet,
-        })
-        .then((res) => {
-          const handle = res.data.product.handle;
-          setShopifyProductURL(
-            `https://dao-punks.myshopify.com/products/${handle}`
-          );
-        });
+        axios
+          .post(`${process.env.REACT_APP_MERCH_REDEEM_API_URL}/redeem`, {
+            signature: signature,
+            request: `REDEEM:${nftId}:${size}`,
+            address: wallet,
+          })
+          .then((res) => {
+            const handle = res.data.product.handle;
+            setShopifyProductURL(
+              `https://dao-punks.myshopify.com/products/${handle}`
+            );
+          });
+      }
     } else if (page === 3 && !shopifyProductURL) {
       setPage(2);
     } else {
