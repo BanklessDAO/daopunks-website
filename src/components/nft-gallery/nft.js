@@ -162,18 +162,16 @@ export default function NFT() {
                                 background: "rgba(228, 118, 27, 0.1)",
                                 border: "1px solid rgba(228, 118, 27, 0.5)",
                               }}
-                              className="w-full lg:w-max flex flex-col items-center justify-center gap-y-2 rounded p-3 lg:px-5  open-sans"
+                              className="w-full flex flex-col items-center justify-center gap-y-2 rounded p-3 lg:px-6 open-sans"
                             >
                               <h3 style={{ color: "rgba(228, 118, 27, 1)" }}>
                                 {attr.trait_type}
                               </h3>
                               <p
-                                style={{ color: "rgba(0, 0, 0, 0.6)" }}
+                                style={{ color: "rgba(0, 0, 0, 0.6)" , maxWidth:'10rem' }}
                                 className="w-max text-center text-sm"
                               >
-                                ANON
-                                <br />
-                                25% have this trait
+                                {attr.value}
                               </p>
                             </div>
                           ))
